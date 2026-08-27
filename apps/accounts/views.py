@@ -64,3 +64,10 @@ class LoginAPIView(APIView):
             },
             "user": UserProfileSerializer(user).data
         }, status=status.HTTP_200_OK)
+
+
+class MeView(APIView):
+    def get(self, request):
+        user = request.user
+        serializer = UserProfileSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
