@@ -52,7 +52,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = CustomUser.objects.create_user(password=password, **validated_data)
         return user
 
+
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'first_name', 'last_name', 'phone_number', 'bio', 'address', 'date_of_birth']
+        fields = [
+            'id', 'username', 'first_name', 'last_name', 
+            'phone_number', 'bio', 'address', 'date_of_birth', 
+            'average_rating', 'total_ratings_count'
+        ]
